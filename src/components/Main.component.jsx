@@ -4,9 +4,9 @@ import { ethers } from "ethers";
 //import Web3 from "web3";
 import { CoinAddress,CoinABI } from "../lib/constant-coin";
 import {ABI , Address} from '../lib/constant-transaction';
+import Loader from '../assets/loading.gif';
 const initialCoins = 5000000;
 const TokenPrice = '1000000000000000'; //0.001eth 
-
 
 
 const GetCoinContract=()=>{
@@ -43,6 +43,7 @@ const Main = () =>{
     const [accountBalance,setAccountBalance] = useState(0);
     const [contractBalance,setContractBalance] =useState(0);
     const [noOfTokens,setNoOfTokens] = useState(0);
+    const [loading,setLoading] = useState();
     
     useEffect(()=>{
         const setBalance =async()=>{
@@ -66,8 +67,10 @@ const Main = () =>{
         const tx = await contract.buyTokens(noOfTokens,{
             value: `${Math.floor((TokenPrice*noOfTokens*10)/9)}`,
             from:currentAccount,
-        })              
-        tx.wait();
+        })    
+        setLoading(true);          
+        await tx.wait();
+        setLoading(false);
         console.log(tx);
     }
     const SellTokens =async (event)=>{
@@ -75,8 +78,10 @@ const Main = () =>{
         console.log("selling");
         const tx = await contract.sellTokens(noOfTokens,{
             from:currentAccount,
-        })              
-        tx.wait();
+        })  
+        setLoading(true);             
+        await tx.wait();
+        setLoading(false); 
         console.log(tx);
     }
     
@@ -91,6 +96,7 @@ const Main = () =>{
             console.error(error);
         }
     }
+    console.log(loading);
     
     return(
     <div className="flex flex-col  content-center items-center h-screen">
@@ -123,6 +129,7 @@ const Main = () =>{
             <h1 className="flex justify-center">Coins left: {contractBalance? contractBalance:"0"}</h1>
         </div>
         <progress className="w-3/4 h-4 rounded-2xl"  value={contractBalance/initialCoins} max="100"></progress>
+        {loading?<img className="absolute left-1/3.3 bottom-1/3.3" src={Loader} alt="loader"/>:""}
     </div>
     )
 }
