@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/MarineCoin.github.io/static/css/main.1f8722aa.css",
+    "main.js": "/MarineCoin.github.io/static/js/main.d7f9379b.js",
+    "static/js/787.c4e7f8f9.chunk.js": "/MarineCoin.github.io/static/js/787.c4e7f8f9.chunk.js",
+    "static/media/uniswap.png": "/MarineCoin.github.io/static/media/uniswap.6afdda179c5890221056.png",
+    "index.html": "/MarineCoin.github.io/index.html",
+    "main.1f8722aa.css.map": "/MarineCoin.github.io/static/css/main.1f8722aa.css.map",
+    "main.d7f9379b.js.map": "/MarineCoin.github.io/static/js/main.d7f9379b.js.map",
+    "787.c4e7f8f9.chunk.js.map": "/MarineCoin.github.io/static/js/787.c4e7f8f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1f8722aa.css",
+    "static/js/main.d7f9379b.js"
+  ]
+}
